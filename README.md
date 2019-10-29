@@ -15,9 +15,9 @@ If you don't want to mess around with all that, you can install
 [Requests](https://requests.kennethreitz.org/en/master/) directly with pip or
 your package manager (e.g. apt on Debian or Ubuntu):
 
-```console
-$ pip3 install --user requests  # local, user-only
-# apt install python3-requests  # global, system-wide
+```shell
+pip3 install --user requests       # local, user-only
+sudo apt install python3-requests  # global, system-wide
 ```
 
 ## Running
@@ -34,25 +34,25 @@ TOKEN=<personal access token>
 
 Alternatively, or if you're not using Pipenv, set an environment variable:
 
-```console
-$ export TOKEN=<personal access token>  # bash, ksh, zsh
-$ set -x TOKEN <personal access token>  # fish
-$ setenv TOKEN <personal access token>  # csh, tcsh
+```shell
+export TOKEN=<personal access token>  # bash, ksh, zsh
+set -x TOKEN <personal access token>  # fish
+setenv TOKEN <personal access token>  # csh, tcsh
 ```
 
 Then, create the virtualenv and run the script (Pipenv will automatically pick
 up variables in `.env`):
 
-```console
-$ pipenv install
-$ pipenv run ./starstruck.py <username>
+```shell
+pipenv install
+pipenv run ./starstruck.py <username>
 ```
 
 You can also open a shell in the virtualenv with `pipenv shell`. If you're not using
 Pipenv, or if you're in the Pipenv shell, simply run the script directly:
 
-```console
-$ ./starstruck.py <username>
+```shell
+./starstruck.py <username>
 ```
 
 The script will print the names and number of stargazers of up to twenty repositories
