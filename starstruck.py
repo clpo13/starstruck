@@ -24,6 +24,8 @@ def run_query(query):
         r.raise_for_status()
     except requests.HTTPError as e:
         print(str(e))
+        if r.status_code == 401:
+            print('Have you set GH_TOKEN?')
         sys.exit(1)
 
     return r.json()
