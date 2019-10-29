@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import os
-import pprint
 import sys
 
 import requests
@@ -23,8 +22,6 @@ def run_query(query):
 
 
 def main():
-    pp = pprint.PrettyPrinter()
-
     query = '''
 query {
   user(login:"clpo13") {
@@ -41,7 +38,21 @@ query {
 '''
 
     q = run_query(query)
-    pp.pprint(q)
+
+    errs = q.get('errors')
+    if errs:
+        print('Errors encountered:')
+        for e in errs:
+            print(f"  {e['message']}")
+        sys.exit(1)
+    else:
+        print("Repository (stars)")
+        print("------------------")
+        repos = q['data']['user']['repositories']['nodes']
+        for r in repos:
+            name = r['name']
+            stars = r['stargazers']['totalCount']
+            print(f'{name} ({stars})')
 
 
 if __name__ == '__main__':
