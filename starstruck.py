@@ -16,7 +16,7 @@ def run_query(query):
     received and exits."""
 
     gh_endpoint = 'https://api.github.com/graphql'
-    token = os.getenv('TOKEN')
+    token = os.getenv('GH_TOKEN')
     r = requests.post(gh_endpoint,
                       headers={'Authorization': f'bearer {token}'},
                       json={'query': query})

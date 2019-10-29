@@ -31,22 +31,22 @@ private repositories you have access to):
 
 ```shell
 # .env
-TOKEN=a1b2c3
+GH_TOKEN=a1b2c3
 ```
 
 Alternatively, or if you're not using Pipenv, set an environment variable:
 
 ```shell
-export TOKEN=a1b2c3  # bash, ksh, zsh
-set -x TOKEN a1b2c3  # fish
-setenv TOKEN a1b2c3  # csh, tcsh
+export GH_TOKEN=a1b2c3  # bash, ksh, zsh
+set -x GH_TOKEN a1b2c3  # fish
+setenv GH_TOKEN a1b2c3  # csh, tcsh
 ```
 
 On Windows:
 
 ```powershell
-$Env:TOKEN = "a1b2c3"  # PowerShell
-set TOKEN=a1b2c3       # cmd.exe
+$Env:GH_TOKEN = "a1b2c3"  # PowerShell
+set GH_TOKEN=a1b2c3       # cmd.exe
 ```
 
 Then, create the virtualenv and run the script (Pipenv will automatically pick
