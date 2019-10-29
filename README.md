@@ -42,7 +42,7 @@ Then, create the virtualenv, install dependencies, and run the script:
 
 ```shell
 poetry install
-poetry run starstruck.py clpo13
+poetry run starstruck clpo13
 ```
 
 You can also open a shell in the virtualenv with `poetry shell`. If you're not using
