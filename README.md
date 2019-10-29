@@ -1,23 +1,25 @@
 # starstruck
 
-Get a list of a user's GitHub repositories ordered by how many stars they have.
+Get a list of a user's GitHub repositories ordered by how many stars the repo has.
 
 ## Prerequisites
 
-Requires Python 3.6+ and [Pipenv](https://pipenv.kennethreitz.org/en/latest/).
-On Ubuntu 19.04 or later, install with `sudo apt install pipenv`. Otherwise, use
-pip: `pip install --user pipenv`.
+Requires Python 3.6+ and, optionally, [Pipenv](https://pipenv.kennethreitz.org/en/latest/).
+On Ubuntu 19.04 or later, install with `sudo apt install pipenv`. On macOS, use
+[Homebrew](https://brew.sh/): `brew install pipenv`. Otherwise, use pip:
+`pip install --user pipenv`.
 
 The use of [pyenv](https://github.com/pyenv/pyenv) is highly recommended, as Pipenv
-will select and install the right version of Python for you automatically.
+will select and, if necessary, install the right version of Python for you automatically.
 
-If you don't want to mess around with all that, you can install
+If you don't want to mess around with all that, you can install the dependency
 [Requests](https://requests.kennethreitz.org/en/master/) directly with pip or
 your package manager (e.g. apt on Debian or Ubuntu):
 
 ```shell
-pip3 install --user requests       # local, user-only
-sudo apt install python3-requests  # global, system-wide
+pip3 install --user requests       # user-only
+py -3 -m pip install requests      # Windows
+sudo apt install python3-requests  # system-wide
 ```
 
 ## Running
@@ -29,15 +31,22 @@ private repositories you have access to):
 
 ```shell
 # .env
-TOKEN=<personal access token>
+TOKEN=a1b2c3
 ```
 
 Alternatively, or if you're not using Pipenv, set an environment variable:
 
 ```shell
-export TOKEN=<personal access token>  # bash, ksh, zsh
-set -x TOKEN <personal access token>  # fish
-setenv TOKEN <personal access token>  # csh, tcsh
+export TOKEN=a1b2c3  # bash, ksh, zsh
+set -x TOKEN a1b2c3  # fish
+setenv TOKEN a1b2c3  # csh, tcsh
+```
+
+On Windows:
+
+```powershell
+$Env:TOKEN = "a1b2c3"  # PowerShell
+set TOKEN=a1b2c3       # cmd.exe
 ```
 
 Then, create the virtualenv and run the script (Pipenv will automatically pick
@@ -52,7 +61,8 @@ You can also open a shell in the virtualenv with `pipenv shell`. If you're not u
 Pipenv, or if you're in the Pipenv shell, simply run the script directly:
 
 ```shell
-./starstruck.py <username>
+./starstruck.py <username>        # Linux/BSD/macOS
+py -3 .\starstruck.py <username>  # Windows
 ```
 
 The script will print the names and number of stargazers of up to twenty repositories
