@@ -1,6 +1,7 @@
 # starstruck
 
-Get a list of a user's GitHub repositories ordered by how many stars the repo has.
+Gets a list of a user's GitHub repositories ordered by how many stars the repo has
+using the [GitHub GraphQL API v4](https://developer.github.com/v4/guides/intro-to-graphql/).
 
 ## Prerequisites
 
