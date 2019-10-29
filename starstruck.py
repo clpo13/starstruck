@@ -10,6 +10,11 @@ import requests
 
 
 def run_query(query):
+    """Constructs an HTTP request using the given GraphQL query and an
+    authorization token specified in an environment variable. Returns the
+    response data as JSON if successful; otherwise, prints any HTTP errors
+    received and exits."""
+
     gh_endpoint = 'https://api.github.com/graphql'
     token = os.getenv('TOKEN')
     r = requests.post(gh_endpoint,
@@ -25,9 +30,15 @@ def run_query(query):
 
 
 def main():
+    if len(sys.argv) != 2:
+        print('Specify a user to query')
+        sys.exit(1)
+
+    username = sys.argv[1]
+
     query = '''
 query {
-  user(login:"clpo13") {
+  user(login:"%s") {
     repositories(first:20, orderBy:{field:STARGAZERS, direction:DESC}) {
       nodes {
         name
@@ -38,7 +49,7 @@ query {
     }
   }
 }
-'''
+''' % username
 
     q = run_query(query)
 
@@ -46,16 +57,20 @@ query {
     if errs:
         print('Errors encountered:')
         for e in errs:
-            print(f"  {e['message']}")
+            msg = e['message']
+            print(f'  {msg}')
         sys.exit(1)
     else:
-        print("Repository (stars)")
-        print("------------------")
         repos = q['data']['user']['repositories']['nodes']
-        for r in repos:
-            name = r['name']
-            stars = r['stargazers']['totalCount']
-            print(f'{name} ({stars})')
+        if len(repos) == 0:
+            print('No public repositories found for this user')
+        else:
+            print("Repository (stars)")
+            print("------------------")
+            for r in repos:
+                name = r['name']
+                stars = r['stargazers']['totalCount']
+                print(f'{name} ({stars})')
 
 
 if __name__ == '__main__':

@@ -15,13 +15,13 @@ private repositories):
 TOKEN=<personal access token>
 ```
 
-Then, install create the virtualenv and run the script (Pipenv will automatically
-pick up variables in `.env`):
+Then, create the virtualenv and run the script (Pipenv will automatically pick
+up variables in `.env`):
 
 ```bash
 sudo apt install python3-pipenv  # if not already installed
 pipenv install
-pipenv run ./starstruck.py
+pipenv run ./starstruck.py <username>
 ```
 
 ## License
