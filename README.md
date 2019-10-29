@@ -54,15 +54,15 @@ up variables in `.env`):
 
 ```shell
 pipenv install
-pipenv run ./starstruck.py <username>
+pipenv run ./starstruck.py clpo13
 ```
 
 You can also open a shell in the virtualenv with `pipenv shell`. If you're not using
 Pipenv, or if you're in the Pipenv shell, simply run the script directly:
 
 ```shell
-./starstruck.py <username>        # Linux/BSD/macOS
-py -3 .\starstruck.py <username>  # Windows
+./starstruck.py clpo13        # Linux/BSD/macOS
+py -3 .\starstruck.py clpo13  # Windows
 ```
 
 The script will print the names and number of stargazers of up to twenty repositories
