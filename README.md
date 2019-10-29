@@ -5,15 +5,10 @@ using the [GitHub GraphQL API v4](https://developer.github.com/v4/guides/intro-t
 
 ## Prerequisites
 
-Requires Python 3.6+ and, optionally, [Pipenv](https://pipenv.kennethreitz.org/en/latest/).
-On Ubuntu 19.04 or later, install with `sudo apt install pipenv`. On macOS, use
-[Homebrew](https://brew.sh/): `brew install pipenv`. Otherwise, use pip:
-`pip install --user pipenv`.
+Requires Python 3.6+. Installing with [Poetry](https://poetry.eustace.io/) is
+optional but highly recommended.
 
-The use of [pyenv](https://github.com/pyenv/pyenv) is highly recommended, as Pipenv
-will select and, if necessary, install the right version of Python for you automatically.
-
-If you don't want to mess around with all that, you can install the dependency
+If you don't want to mess around with that, you can install the dependency
 [Requests](https://requests.kennethreitz.org/en/master/) directly with pip or
 your package manager (e.g. apt on Debian or Ubuntu):
 
@@ -25,17 +20,10 @@ sudo apt install python3-requests  # system-wide
 
 ## Running
 
-First, create a `.env` file in the same directory as `starstruck.py` containing a
+First, set an environment variable containing a
 GitHub [personal access token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/)
 with at least the `public_repo` scope (full `repo` access will also show stars for
 private repositories you have access to):
-
-```shell
-# .env
-GH_TOKEN=a1b2c3
-```
-
-Alternatively, or if you're not using Pipenv, set an environment variable:
 
 ```shell
 export GH_TOKEN=a1b2c3  # bash, ksh, zsh
@@ -50,16 +38,15 @@ $Env:GH_TOKEN = "a1b2c3"  # PowerShell
 set GH_TOKEN=a1b2c3       # cmd.exe
 ```
 
-Then, create the virtualenv and run the script (Pipenv will automatically pick
-up variables in `.env`):
+Then, create the virtualenv, install dependencies, and run the script:
 
 ```shell
-pipenv install
-pipenv run ./starstruck.py clpo13
+poetry install
+poetry run starstruck.py clpo13
 ```
 
-You can also open a shell in the virtualenv with `pipenv shell`. If you're not using
-Pipenv, or if you're in the Pipenv shell, simply run the script directly:
+You can also open a shell in the virtualenv with `poetry shell`. If you're not using
+Poetry, or if you're in the virtualenv shell, simply run the script directly:
 
 ```shell
 ./starstruck.py clpo13        # Linux/BSD/macOS
