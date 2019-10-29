@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# starstruck.py - get a user's GitHub repos by stars
+# Copyright (c) 2019 Cody Logan
+# SPDX-License-Identifier: MIT
 
 import os
 import sys
