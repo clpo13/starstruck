@@ -11,7 +11,7 @@ repository = "https://github.com/clpo13/starstruck"
 starstruck = 'starstruck:main'
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.7"
 requests = "^2.22"
 
 [tool.poetry.dev-dependencies]
